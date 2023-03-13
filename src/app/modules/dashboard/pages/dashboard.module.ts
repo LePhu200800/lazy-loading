@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotFoundRoutingModule } from './not-found-routing.module';
-
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    NotFoundRoutingModule
+    DashboardRoutingModule
   ]
 })
-export class NotFoundModule { }
+export class DashboardModule { }
