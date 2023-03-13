@@ -6,7 +6,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
-  }
+  },
+  {
+    path: 'company',
+    loadChildren: () => import('./modules/company/company.module').then(m => m.CompanyModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
+  },
 ]
 
 @NgModule({

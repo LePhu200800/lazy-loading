@@ -6,12 +6,16 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
-  {
-    path: 'company',
-    loadChildren: () => import('./../company/company.module').then(m => m.CompanyModule)
-  },
+  // {
+  //   path: 'company',
+  //   loadChildren: () => import('./../company/company.module').then(m => m.CompanyModule)
+  // },
+  // {
+  //   path: 'user',
+  //   loadChildren: () => import('./../user/user.module').then(m => m.UserModule)
+  // },
   // {
   //   path: 'division',
   //   component: DivisionComponent
