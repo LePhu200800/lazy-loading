@@ -6,7 +6,10 @@ import { CompanyCreateComponent } from './company-create/company-create.componen
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [CompanyComponent, CompanyCreateComponent],
+  declarations: [
+    CompanyComponent,
+    CompanyCreateComponent
+  ],
   imports: [
     CommonModule,
     CompanyRoutingModule,

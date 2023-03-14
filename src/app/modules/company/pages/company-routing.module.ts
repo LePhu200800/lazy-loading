@@ -7,12 +7,15 @@ import { CompanyCreateComponent } from './company-create/company-create.componen
 const routes: Routes = [
   {
     path: '',
-    component: CompanyComponent
+    component: CompanyComponent,
+    pathMatch: 'full',
+    children: [
+      {
+        path: 'company-create',
+        component: CompanyCreateComponent
+      }
+    ]
   },
-  {
-    path: 'company-create',
-    component: CompanyCreateComponent
-  }
 ];
 
 @NgModule({
