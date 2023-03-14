@@ -4,7 +4,7 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company/company.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [CompanyComponent],
   imports: [
     CommonModule,
     CompanyRoutingModule
