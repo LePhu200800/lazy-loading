@@ -7,19 +7,16 @@ import { DivisionCreateComponent } from './division-create/division-create.compo
 const routes: Routes = [
   {
     path: '',
-    component: DivisionComponent
+    component: DivisionComponent,
   },
   {
     path: 'division-create',
-    component: DivisionCreateComponent
+    component: DivisionCreateComponent,
   }
-]
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class DivisionRoutingModule { }
+export class DivisionRoutingModule {}

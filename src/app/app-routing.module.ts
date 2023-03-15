@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'company',
     loadChildren: () => import('./modules/company/pages/company.module').then(m => m.CompanyModule),
-    canActivate: [PermissionGuard]
+    canActivate: [PermissionGuard],
+    
   },
   {
     path: 'division',

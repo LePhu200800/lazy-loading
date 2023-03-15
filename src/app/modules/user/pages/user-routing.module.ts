@@ -12,14 +12,11 @@ const routes: Routes = [
   {
     path: 'user-create',
     component: UserCreateComponent
-  }
-]
+  },
+];
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}
