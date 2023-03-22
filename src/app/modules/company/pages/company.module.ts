@@ -4,7 +4,9 @@ import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company/company.component';
 import { CompanyCreateComponent } from './company-create/company-create.component';
 import { RouterModule } from '@angular/router';
-
+import {MatTableModule} from '@angular/material/table';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     CompanyComponent,
@@ -13,7 +15,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     CompanyRoutingModule,
-    RouterModule
+    RouterModule,
+    MatTableModule,
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class CompanyModule { }

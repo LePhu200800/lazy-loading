@@ -7,16 +7,19 @@ import { CompanyCreateComponent } from './company-create/company-create.componen
 const routes: Routes = [
   {
     path: '',
-    component: CompanyComponent,
-    pathMatch: 'full',
-    children: [
-      {
-        path: 'company-create',
-        component: CompanyCreateComponent
-      }
-    ]
+    component: CompanyComponent
   },
-];
+  {
+    path: 'create-company',
+    component: CompanyCreateComponent
+  },
+  {
+    path: 'edit-company/:id',
+    component: CompanyCreateComponent
+  },
+  
+]
+
 
 @NgModule({
   declarations: [],

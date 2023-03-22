@@ -1,1 +1,18 @@
 <p>company-create works!</p>
+
+<form #frm1="ngForm" class="col-6 m-auto">
+    <p><label>id</label>
+       <input name="id" [(ngModel)]="id" class="form-control" type="text"> 
+    </p>
+    <p><label>name</label>
+       <input name="name"  [(ngModel)]="name" class="form-control" type="text"> 
+    </p>
+    <p><label>location</label>
+        <input name="location" [(ngModel)]="location" class="form-control" type="text"> 
+     </p>
+    <p> <button class="btn btn-success" (click) = "addOrUpdateCompany({
+      id,
+      name,
+      location
+    })">Add</button> </p>
+</form>
