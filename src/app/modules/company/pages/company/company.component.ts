@@ -18,10 +18,14 @@ export class CompanyComponent {
     private companyService: CompanyService,
     private router: Router,
     ){
+  }
+
+  ngOnInit() {
     this.companyService.getData().subscribe(data => {
       this.dataSource = data;
     })
-  }
+ }
+
   displayedColumns: string[] = ['stt', 'name', 'location', 'delete'];
   onRowClicked(row: any) {
     console.log('Row clicked: ', row);

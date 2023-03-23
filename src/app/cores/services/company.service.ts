@@ -37,6 +37,16 @@ export class CompanyService {
     );
   }
 
+  edit(company:PeriodicElement){
+    this.http.put(this.url+"/"+company.id, company).subscribe((res) =>{
+
+    },
+    (err:HttpErrorResponse) => {
+      console.log(111,err)
+   }
+    );
+  }
+
   getCompanyId(id:number): Observable<any>{
     return this.http.get(this.url+"/"+id)
   }
