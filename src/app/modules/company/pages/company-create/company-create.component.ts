@@ -1,14 +1,9 @@
 import { Component, SimpleChanges } from '@angular/core';
-import {CompanyService} from '../../../../cores/services/company.service'
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import { CompanyService } from '../../../../cores/services/company.service'
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { CompanyInfo, CompanyMode } from 'src/app/cores/models/companyModel';
 
-
-export interface PeriodicElement {
-  id: number;
-  name: string;
-  location: string;
-}
 @Component({
   selector: 'app-company-create',
   templateUrl: './company-create.component.html',
@@ -17,9 +12,8 @@ export interface PeriodicElement {
 
 
 export class CompanyCreateComponent {
-  id:any;
-  name:any;
-  location: any;
+  companyInfo: CompanyInfo = {};
+  companyMode = CompanyMode.CREATE;
   editOrCreate: string | undefined;
   checkCreateOrEdit: boolean | undefined;
   isExist: boolean | undefined;
@@ -27,43 +21,52 @@ export class CompanyCreateComponent {
     private companyService: CompanyService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ){
+  ) {
 
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.companyInfo.id = this.activatedRoute.snapshot.paramMap.get('id') || null;
   }
 
   ngOnInit() {
-    this.companyService.getCompanyId(this.id).subscribe(res =>{
-      this.id =  res.id;
-      this.name = res.name;
-      this.location = res.location;
-
-    })
- }
-
- getCompanyId(id: number)
- {
-   this.companyService.getCompanyId(id).subscribe(res =>{
-     console.log(111, res);
-   })
- }
-  
-
-  addOrUpdateCompany(company:PeriodicElement){
-    this.companyService.getCompanyId(this.id).subscribe(res =>{
-      if(res){
-        this.companyService.edit(company);
-        console.log('edit')
-      }
-    },
-    (err:HttpErrorResponse) => {
-      if(err){
-        this.companyService.add(company);
-        console.log('add')
-      }
+    if (this.companyInfo?.id) {
+      this.companyMode = CompanyMode.UPDATE;
+      this.getCompanyId(this.companyInfo.id);
     }
-    )
-    this.router.navigate(['/company'])
+  }
+
+  getCompanyId(id: string) {
+    this.companyService.getCompanyId(id).subscribe((res: CompanyInfo) => {
+      this.companyInfo = res ? res : {};
+    })
+  }
+
+  addCompany() {
+    this.companyService.addCompany(this.companyInfo).subscribe((res: any) => {
+      this.router.navigate(['/company']);
+    }, (error) => {
+      console.log('1111', error);
+      // TODO handle error
+    });
+
+  }
+  editCompany() {
+    this.companyService.editCompany(this.companyInfo).subscribe((res: any) => {
+      this.router.navigate(['/company']);
+    }, (error) => {
+      console.log('err2', error);
+      // TODO handle error
+    });
+  }
+
+
+  addOrUpdateCompany() {
+    switch (this.companyMode) {
+      case CompanyMode.CREATE:
+        this.addCompany();
+        break;
+      case CompanyMode.UPDATE:
+        this.editCompany();
+        break;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {

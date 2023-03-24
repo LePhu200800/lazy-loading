@@ -2,17 +2,13 @@
 
 <form #frm1="ngForm" class="col-6 m-auto">
     <p><label>id</label>
-       <input name="id" [(ngModel)]="id" class="form-control" type="text"> 
+       <input name="id" [(ngModel)]="companyInfo.id" class="form-control" type="text"> 
     </p>
     <p><label>name</label>
-       <input name="name"  [(ngModel)]="name" class="form-control" type="text"> 
+       <input name="name"  [(ngModel)]="companyInfo.name" class="form-control" type="text"> 
     </p>
     <p><label>location</label>
-        <input name="location" [(ngModel)]="location" class="form-control" type="text"> 
+        <input name="location" [(ngModel)]="companyInfo.location" class="form-control" type="text"> 
      </p>
-    <p> <button class="btn btn-success" (click) = "addOrUpdateCompany({
-      id,
-      name,
-      location
-    })">Add ỏ Edit</button> </p>
+    <p> <button class="btn btn-success" (click) = "addOrUpdateCompany()">Add ỏ Edit</button> </p>
 </form>
