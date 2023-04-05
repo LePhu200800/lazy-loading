@@ -1,14 +1,15 @@
 <p>company-create-or-edit works!</p>
 
-<form #frm1="ngForm" class="col-6 m-auto">
-    <p><label>id</label>
-       <input name="id" [(ngModel)]="companyInfo.id" class="form-control" type="text"> 
-    </p>
-    <p><label>name</label>
-       <input name="name"  [(ngModel)]="companyInfo.name" class="form-control" type="text"> 
-    </p>
-    <p><label>location</label>
-        <input name="location" [(ngModel)]="companyInfo.location" class="form-control" type="text"> 
-     </p>
-    <p> <button class="btn btn-success" (click) = "addOrUpdateCompany()">Add ỏ Edit</button> </p>
-</form>
+
+<form [formGroup]="companyForm" (ngSubmit)="addOrUpdateCompany()">
+
+   <label for="id">Id: </label>
+   <input id="id" type="text" formControlName="id">
+ 
+   <label for="name">Name: </label>
+   <input id="name" type="text" formControlName="name">
+
+   <label for="location">Location: </label>
+   <input id="location" type="text" formControlName="location">
+   <button type="submit" [disabled]="!companyForm.valid">Submit</button>
+ </form>

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     CompanyComponent,
@@ -18,7 +19,8 @@ import {HttpClientModule} from '@angular/common/http';
     RouterModule,
     MatTableModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class CompanyModule { }

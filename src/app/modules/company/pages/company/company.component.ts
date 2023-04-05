@@ -30,7 +30,7 @@ export class CompanyComponent {
   onRowClicked(row: any) {
     console.log('Row clicked: ', row);
   }
-  delete(id: number){
+  delete(id: string){
     console.log(id)
     this.companyService.delete(id);
     this.companyService.getData().subscribe(data => {

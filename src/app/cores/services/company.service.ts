@@ -16,8 +16,8 @@ export class CompanyService {
     return this.http.get(this.url)
   }
 
-  delete(id: number) {
-    return this.http.delete(this.url + "/" + id);
+  delete(id: string) {
+    this.http.delete(this.url + "/" + id).subscribe();
   }
 
   addCompany(company: CompanyInfo) {

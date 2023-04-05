@@ -2,18 +2,13 @@
   "company": [
     {
       "id": 1,
-      "name": "3",
-      "location": "4"
+      "name": "22",
+      "location": "22"
     },
     {
       "id": 2,
       "name": "Company2",
       "location": "HCM"
-    },
-    {
-      "id": 3,
-      "name": "dasdasdasda",
-      "location": "asdasdasds"
     },
     {
       "id": 4,
@@ -49,6 +44,16 @@
       "id": "30",
       "name": "303",
       "location": "30"
+    },
+    {
+      "id": "52",
+      "name": "47",
+      "location": "2"
+    },
+    {
+      "id": "90",
+      "name": "90",
+      "location": "92"
     }
   ]
 }
