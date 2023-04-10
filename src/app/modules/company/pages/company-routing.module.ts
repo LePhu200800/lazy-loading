@@ -15,7 +15,7 @@ const routes: Routes = [
     component: CompanyCreateComponent
   },
   {
-    path: 'company-edit',
+    path: 'company-edit/:id',
     component: CompanyEditComponent
   }
 ];

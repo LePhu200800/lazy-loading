@@ -1,13 +1,13 @@
 <p>Company Edit Page</p>
-<form class="example-form" [formGroup]="companyForm" (ngSubmit)="updateCompany()">
+<form class="example-form" [formGroup]="updateFormCompany" (ngSubmit)="updateCompany()">
   <mat-form-field class="example-full-width">
-    <mat-label>ID</mat-label>
-    <input matInput type="text" id="id" name="id" formControlName="id">
+    <mat-label >ID</mat-label>
+    <input matInput type="text" formControlName="id" readonly>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>Name</mat-label>
-    <input matInput type="text" id="name" name="name" formControlName="name">
+    <input matInput type="text" formControlName="name">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">

@@ -13,6 +13,10 @@ export class CompanyService {
   getDataCompany(): Observable<any> {
     return this.http.get(this.baseUrl)
   }
+
+  getCompanyById = (id: number) => {
+    return this.http.get(`${this.baseUrl}/${id}`)
+  }
   
   createCompany = (company: CompanyModel) => {
   return this.http.post(this.baseUrl, company);

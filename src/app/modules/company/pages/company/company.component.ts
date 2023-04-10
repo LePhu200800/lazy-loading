@@ -21,10 +21,8 @@ export class CompanyComponent {
   dataSource!: MatTableDataSource<CompanyModel>
 @ViewChild(MatPaginator) paginator!: MatPaginator
 @ViewChild(MatSort) sort!: MatSort
-
 getData = () => {
   this.companyService.getDataCompany().subscribe(data => {
-    console.log(data)
     this.dataSource = new MatTableDataSource(data);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -37,8 +35,8 @@ deleteCompany = (id: any) => {
   });
 }
 
-navigateEdit = () => {
-  this.router.navigate([`company/company-edit/`]);
+navigateEdit = (index: any) => {
+  this.router.navigate([`company/company-edit/${index}`]);
 }
 
 filterData = (e: any) => {
