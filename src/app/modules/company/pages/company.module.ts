@@ -9,17 +9,25 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CompanyEditComponent } from './company-edit/company-edit.component';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
-  declarations: [CompanyComponent, CompanyCreateComponent],
+  declarations: [CompanyComponent, CompanyCreateComponent, CompanyEditComponent],
   imports: [
     CommonModule,
     CompanyRoutingModule,
     RouterModule,
     MatInputModule,
     MatTableModule,
+    MatButtonModule,
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
+  
 })
 export class CompanyModule {}

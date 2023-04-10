@@ -1,7 +1,7 @@
 export class CompanyModel {
-    id: number;
-    name: string;
-    address: string;
+    id?: number;
+    name?: string;
+    address?: string;
 
     constructor(id: number, name: string, address: string) {
         this.id = id;
@@ -9,4 +9,6 @@ export class CompanyModel {
         this.address = address;
     }
 }
+
+
 
