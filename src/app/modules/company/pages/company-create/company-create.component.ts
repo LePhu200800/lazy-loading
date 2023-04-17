@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms'
 import { CompanyService } from 'src/app/cores/services/company/company.service';
 import { Router } from '@angular/router';
@@ -13,6 +13,9 @@ export class CompanyCreateComponent {
     private companyService: CompanyService,
     private router: Router
   ){}
+  
+  dataSource!: [];
+
   companyForm = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
@@ -24,5 +27,5 @@ export class CompanyCreateComponent {
       this.router.navigate(['/company'])
     });
   }
-  
+
 }
