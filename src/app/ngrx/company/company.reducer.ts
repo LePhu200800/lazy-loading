@@ -1,15 +1,19 @@
 import { createReducer, on } from "@ngrx/store";
 import { CompanyModel } from "src/app/models/company.model";
-import { loadCompanies, loadCompaniesSuccess, loadCompaniesFailure } from "./company.action";
+import { loadCompanies, loadCompaniesSuccess, loadCompaniesFailure, createCompany, createCompanySuccess, createCompanyFail, deleteCompany, deleteCompanySuccess, updateCompany, updateCompanySuccess, updateCompanyFail } from "./company.action";
 
 export interface CompanyState {
-    company: CompanyModel[];
+    dataCompany: CompanyModel[];
+    company: any;
+    companyId: any; 
     error: any;
     status: 'pending'| 'loading' | 'error' | 'success';
 }
 
 export const initialState: CompanyState = {
-    company: [],
+    dataCompany: [],
+    companyId: null,
+    company: null,
     error: null,
     status: 'pending'
 }
@@ -27,7 +31,7 @@ export const companyReducer = createReducer(
     on(loadCompaniesSuccess, (state, { companies}) => {
         return {
             ...state,
-            company: companies,
+            dataCompany: companies,
             error: null,
             status: 'success'
         }       
@@ -37,6 +41,66 @@ export const companyReducer = createReducer(
             ...state,
         status: 'error',
         error: error
+        }
+    }),
+    on(createCompany, (state) => {
+        return {
+            ...state,
+            status: "loading"
+        }
+    }),
+    on(createCompanySuccess, (state, {contentCompany}) => {
+        return {
+            ...state,
+            company: contentCompany,
+            status: 'success',
+        }
+    }),
+    on(createCompanyFail, (state, {error}) => {
+        return {
+            ...state,
+            status: 'error',
+            error: error
+        }
+    }),
+    on(deleteCompany, (state) => {
+        return {
+            ...state,
+            status: 'loading',
+        }
+    }),
+    on(deleteCompanySuccess, (state, {companyId}) => {
+        return {
+            ...state,
+            companyId: companyId,
+            status: 'success'
+        }
+    }),
+    on(createCompanyFail, (state, {error}) => {
+        return {
+            ...state,
+            status: 'error',
+            error: error
+        }
+    }),
+    on(updateCompany, (state) => {
+        return {
+            ...state,
+            status: 'loading'
+        }
+    }),
+    on(updateCompanySuccess, (state, {contentCompany}) => {
+        return {
+            ...state,
+            company: contentCompany,
+            status: 'success'
+        }
+    }),
+    on(updateCompanyFail, (state, {error}) => {
+        return {
+            ...state,
+            status: 'error',
+            error: error
         }
     })
 )

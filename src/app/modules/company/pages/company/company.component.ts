@@ -7,7 +7,7 @@ import { CompanyModel } from 'src/app/models/company.model';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
 import { selectAll } from 'src/app/ngrx/company/company.selector';
-import { loadCompanies } from 'src/app/ngrx/company/company.action';
+import { deleteCompany, loadCompanies } from 'src/app/ngrx/company/company.action';
 import { AppState } from 'src/app/ngrx/app.state';
 
 @Component({
@@ -22,24 +22,22 @@ export class CompanyComponent implements OnInit {
     this.getData()
   }
   public allCompany$ = this.store.select(selectAll)
-  public company = '';
-  data!: any[];
   displayedColumns: string[] = ['id', 'name', 'address',  'actions'];
   dataSource!: MatTableDataSource<CompanyModel>
 @ViewChild(MatPaginator) paginator!: MatPaginator
 @ViewChild(MatSort) sort!: MatSort
+
 getData = () => {
-  this.companyService.getDataCompany().subscribe(data => {
-    this.dataSource = new MatTableDataSource(data);
+  this.allCompany$.subscribe(data => {
+    this.dataSource = new MatTableDataSource(data.dataCompany);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  });
+  })
 }
 
 deleteCompany = (id: any) => {
-  this.companyService.deleteCompany(id).subscribe((res) => {
-    this.getData();
-  });
+  this.store.dispatch(deleteCompany(id));
+    this.getData()
 }
 
 navigateEdit = (index: any) => {
@@ -51,9 +49,6 @@ filterData = (e: any) => {
 }
 
 ngOnInit() {
-  this.store.dispatch(loadCompanies())
-  this.allCompany$.subscribe(data => {
-    console.log(data);
-  })
-} 
+  this.store.dispatch(loadCompanies());
+}
 }

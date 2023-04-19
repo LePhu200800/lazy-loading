@@ -2,7 +2,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { CompanyService } from 'src/app/cores/services/company/company.service';
+import { AppState } from 'src/app/ngrx/app.state';
+import { updateCompany } from 'src/app/ngrx/company/company.action';
 
 @Component({
   selector: 'app-company-edit',
@@ -10,7 +13,7 @@ import { CompanyService } from 'src/app/cores/services/company/company.service';
   styleUrls: ['./company-edit.component.scss']
 })
 export class CompanyEditComponent implements OnInit {
-  constructor( private companyService: CompanyService, private router: Router, private activeRoute: ActivatedRoute, formBuilder: FormBuilder ){
+  constructor( private companyService: CompanyService, private router: Router, private activeRoute: ActivatedRoute, formBuilder: FormBuilder, private store: Store<AppState> ){
     this.updateFormCompany = formBuilder.group({
       id: [''],
       name: ['', Validators.required],
@@ -23,10 +26,8 @@ export class CompanyEditComponent implements OnInit {
   updateFormCompany!: FormGroup;
 
   updateCompany = () => {
-    this.companyService.updateCompany(this.updateFormCompany.value).subscribe(res => {
+    this.store.dispatch(updateCompany(this.updateFormCompany.value))
       this.router.navigate(['/company'])
-    });
-   
   }
 
   ngOnInit() {

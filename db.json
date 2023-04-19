@@ -2,8 +2,8 @@
   "company": [
     {
       "id": "1",
-      "name": "Company1231",
-      "address": "Company123"
+      "name": "Company",
+      "address": "Company"
     },
     {
       "id": "2",
@@ -12,36 +12,6 @@
     },
     {
       "id": "3",
-      "name": "Company1",
-      "address": "Company1"
-    },
-    {
-      "id": "4",
-      "name": "Company1",
-      "address": "Company1"
-    },
-    {
-      "id": "5",
-      "name": "Company1",
-      "address": "Company1"
-    },
-    {
-      "id": "6",
-      "name": "Company1",
-      "address": "Company1"
-    },
-    {
-      "id": "7",
-      "name": "Company1",
-      "address": "Company1"
-    },
-    {
-      "id": "8",
-      "name": "Company1",
-      "address": "Company1"
-    },
-    {
-      "id": "9",
       "name": "Company1",
       "address": "Company1"
     }
