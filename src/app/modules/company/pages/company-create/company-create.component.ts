@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl, Validators, RequiredValidator } from '@angular/forms'
 import { CompanyService } from 'src/app/cores/services/company/company.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -20,9 +20,9 @@ export class CompanyCreateComponent {
   
   dataSource!: [];
   companyForm = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl(),
-    address: new FormControl
+    id: new FormControl<any>('',[Validators.required]),
+    name: new FormControl<any>('',[Validators.required] ),
+    address: new FormControl<any>('',[Validators.required])
   });
 
   createCompany = () => {

@@ -14,12 +14,10 @@ import { AppState } from 'src/app/ngrx/app.state';
   selector: 'app-company',
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.scss'],
-  providers:[CompanyService] 
 })
 
 export class CompanyComponent implements OnInit {
-  constructor(private companyService: CompanyService, private router: Router, private store: Store<AppState>) {
-    this.getData()
+  constructor(private router: Router, private store: Store<AppState>) {
   }
   public allCompany$ = this.store.select(selectAll)
   displayedColumns: string[] = ['id', 'name', 'address',  'actions'];
@@ -29,6 +27,7 @@ export class CompanyComponent implements OnInit {
 
 getData = () => {
   this.allCompany$.subscribe(data => {
+    console.log(data)
     this.dataSource = new MatTableDataSource(data.dataCompany);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -37,7 +36,6 @@ getData = () => {
 
 deleteCompany = (id: any) => {
   this.store.dispatch(deleteCompany(id));
-    this.getData()
 }
 
 navigateEdit = (index: any) => {
