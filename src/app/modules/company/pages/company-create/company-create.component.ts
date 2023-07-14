@@ -20,9 +20,9 @@ export class CompanyCreateComponent {
   
   dataSource!: [];
   companyForm = new FormGroup({
-    id: new FormControl<any>('',[Validators.required]),
-    name: new FormControl<any>('',[Validators.required] ),
-    address: new FormControl<any>('',[Validators.required])
+    id: new FormControl(),
+    name: new FormControl(),
+    address: new FormControl
   });
 
   createCompany = () => {

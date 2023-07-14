@@ -28,19 +28,19 @@ export const companyReducer = createReducer(
         }
     }),
 
-    on(loadCompaniesSuccess, (state, { companies}) => {
+    on(loadCompaniesSuccess, (state, action) => {
         return {
             ...state,
-            dataCompany: companies,
+            dataCompany: action.companies,
             error: null,
             status: 'success'
         }       
     }),
-    on(loadCompaniesFailure, (state, {error}) =>{
+    on(loadCompaniesFailure, (state, action) =>{
         return {
             ...state,
         status: 'error',
-        error: error
+        error: action.error
         }
     }),
     on(createCompany, (state) => {
@@ -49,18 +49,18 @@ export const companyReducer = createReducer(
             status: "loading"
         }
     }),
-    on(createCompanySuccess, (state, {contentCompany}) => {
+    on(createCompanySuccess, (state, action) => {
         return {
             ...state,
-            company: contentCompany,
+            company: action.contentCompany,
             status: 'success',
         }
     }),
-    on(createCompanyFail, (state, {error}) => {
+    on(createCompanyFail, (state, action) => {
         return {
             ...state,
             status: 'error',
-            error: error
+            error: action.error
         }
     }),
     on(deleteCompany, (state) => {
@@ -69,18 +69,18 @@ export const companyReducer = createReducer(
             status: 'loading',
         }
     }),
-    on(deleteCompanySuccess, (state, {companyId}) => {
+    on(deleteCompanySuccess, (state, action) => {
         return {
             ...state,
-            companyId: companyId,
+            companyId: action.companyId,
             status: 'success'
         }
     }),
-    on(createCompanyFail, (state, {error}) => {
+    on(createCompanyFail, (state, action) => {
         return {
             ...state,
             status: 'error',
-            error: error
+            error: action.error
         }
     }),
     on(updateCompany, (state) => {
@@ -89,18 +89,18 @@ export const companyReducer = createReducer(
             status: 'loading'
         }
     }),
-    on(updateCompanySuccess, (state, {contentCompany}) => {
+    on(updateCompanySuccess, (state, action) => {
         return {
             ...state,
-            company: contentCompany,
+            company: action.contentCompany,
             status: 'success'
         }
     }),
-    on(updateCompanyFail, (state, {error}) => {
+    on(updateCompanyFail, (state, action) => {
         return {
             ...state,
             status: 'error',
-            error: error
+            error: action.error
         }
     })
 )
